@@ -19,7 +19,7 @@ const config = {
   url: 'https://your-docusaurus-site.example.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  //baseUrl: '/',
   markdown: {
     mermaid: true,
   },
@@ -27,11 +27,24 @@ const config = {
   
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  //organizationName: 'facebook', // Usually your GitHub org/user name.
+  //projectName: 'docusaurus', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
+
+
+  // 你 GitHub 的用户名
+    organizationName: 'oldnew1', 
+
+    // 你 GitHub 的仓库名
+    projectName: 'my-website',  
+
+    // 如果你用的是用户页（即 github.io），这个设置为 "/"
+    baseUrl: '/my-website/',  
+
+    // 使用 GitHub Pages 部署插件
+      plugins: ['@docusaurus/plugin-pwa'],
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
