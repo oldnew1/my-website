@@ -1,0 +1,253 @@
+---
+sidebar_position: 100
+sidebar_label: 代码块
+sidebar_class_name: green
+---
+
+# Easy Tutorial
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import styles from './styles.module.css';
+ 
+<Tabs>
+  <TabItem value="apple" label="Apple" attributes={{className: styles.red}}>
+    This is an apple 🍎
+  </TabItem>
+  <TabItem value="orange" label="Orange" attributes={{className: styles.orange}}>
+    This is an orange 🍊
+  </TabItem>
+  <TabItem value="banana" label="Banana" attributes={{className: styles.yellow}}>
+    This is a banana 🍌
+  </TabItem>
+</Tabs>
+
+# 测试1
+## 测试2
+### 测试3
+<Tabs groupId="operating-systems">
+<TabItem value="apple" label="测试1" attributes={{className:styles.red}}>
+ 这是测试1
+</TabItem>
+<TabItem value="orange" label="测试2" attributes={{className:styles.orange}}>
+这是测试2
+</TabItem>
+<TabItem value="banana" label="测试3" attributes={{className:styles.yellow}}></TabItem>
+</Tabs>
+
+
+<Tabs className="unique-tabs" groupId="operating-systems">
+  <TabItem value="apple" label="Apple" default>
+    This is an apple 🍎
+  </TabItem>
+  <TabItem value="orange" label="Orange">
+    This is an orange 🍊
+  </TabItem>
+  <TabItem value="banana" label="Banana">
+    This is a banana 🍌
+  </TabItem>
+</Tabs>
+
+<Tabs
+className="unique-tabs"
+groupId="operating-systems"
+  defaultValue="orange"
+  values={[
+    {label: 'Apple', value: 'apple'},
+    {label: 'Orange', value: 'orange'},
+    {label: 'Banana', value: 'banana'},
+  ]}>
+  <TabItem value="apple">This is an apple 🍎</TabItem>
+  <TabItem value="orange">This is an orange 🍊</TabItem>
+  <TabItem value="banana">This is a banana 🍌</TabItem>
+</Tabs>
+<Tabs queryString="current-os">
+  <TabItem value="android" label="Android">
+    Android
+  </TabItem>
+  <TabItem value="ios" label="iOS">
+    iOS
+  </TabItem>
+</Tabs>
+
+```jsx title="/src/components/HelloCodeTitle.js"
+function HelloCodeTitle(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+```
+```sql  title="WMS_STOCK"
+SELECT * FROM WMS_STOCK
+```
+```jsx {1,4-6,11}
+import React from 'react';
+
+function MyComponent(props) {
+  if (props.isBar) {
+    return <div>Bar</div>;
+  }
+
+  return <div>Foo</div>;
+}
+
+export default MyComponent;
+```
+ 
+In JavaScript, trying to access properties on `null` will error.
+
+```js
+const name = null;
+//highlight-next-line
+console.log(name.toUpperCase());
+// 高亮注释
+console.log(name.toUpperCase());
+// Uncaught TypeError: Cannot read properties of null (reading 'toUpperCase')
+```
+
+```jsx {1,4-6,11} showLineNumbers
+import React from 'react';
+
+function MyComponent(props) {
+  if (props.isBar) {
+    return <div>Bar</div>;
+  }
+
+  return <div>Foo</div>;
+}
+
+export default MyComponent;
+```
+
+```jsx {1,2-4} showLineNumbers
+这是啥
+这是啥
+这是啥
+这是啥
+这是啥
+这是啥
+function MyComponent(){
+
+}
+
+```
+
+import React, { useState, useEffect } from 'react';
+
+# Live Clock 示例
+
+```jsx live
+function Clock(props) {
+  const [date, setDate] = useState(new Date());
+  useEffect(() => { 
+    const timerID = setInterval(() => tick(), 1000);
+
+    return function cleanup() {
+      clearInterval(timerID);
+    };
+  });
+
+  function tick() {
+    setDate(new Date());
+  }
+
+  return (
+    <div>
+      <h2>It is {date.toLocaleTimeString()}.</h2>
+    </div>
+  );
+}
+```
+
+
+
+# Playground 示例
+
+```jsx live
+function MyPlayground(props) {
+  return (
+    <div>
+      <ButtonExample onClick={() => alert('hey!')}>Click me</ButtonExample>
+    </div>
+  );
+}
+ 
+```
+
+<pre>
+  <b>Input: </b>1 2 3 4{'\n'}
+  <b>Output: </b>"366300745"{'\n'}
+</pre>
+
+ 
+ 
+<Tabs>
+<TabItem value="js" label="JavaScript">
+
+```js
+function helloWorld() {
+  console.log('Hello, world!');
+}
+```
+
+</TabItem>
+<TabItem value="py" label="Python">
+
+```py
+def hello_world():
+  print("Hello, world!")
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+```java
+class HelloWorld {
+  public static void main(String args[]) {
+    System.out.println("Hello, World");
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+<Tabs>
+<TabItem value="查询发货记录" label="查询发货记录"> 
+``` sql title WMS_PICKING
+
+SELECT A.PALLET_NO,A.RELATION_DOC,A.QTY,B.CUSTOMER_NO,B.CUSTOMER_NAME FROM (
+SELECT RELATION_DOC,PALLET_NO,QTY FROM WMS_PICKING WHERE ACTIVITY=1 AND PALLET_NO
+IN
+(
+'BT250331022',
+'BT250330008',
+'BT250331026',
+'BT250331028',
+'BT250401019',
+'BT250401011'
+)) A LEFT JOIN WMS_DELIVERY_NOTICE B ON A.RELATION_DOC=B.DOC_NO AND B.ACTIVITY=1;
+
+```
+</TabItem>
+<TabItem  value="修改信贷状态" label="修改信贷状态"> 
+
+
+``` sql title WMS_DELIVERY_NOTICE
+
+ SELECT CREDIT_STATUS,LL_STATUS,KDGRP FROM WMS_DELIVERY_NOTICE A LEFT JOIN WMS_DELIVERY_NOTICE_D B
+    ON A.DOC_NO=B.FROM_DOC_NO AND B.ACTIVITY=1
+    WHERE A.ACTIVITY=1 AND A.DOC_NO='640018012' AND A.KDGRP IN ('12','13','18')
+ AND ((A.LL_STATUS NOT IN ('Y') ) OR B.CREDIT_STATUS='N');
+ 
+
+ UPDATE WMS_DELIVERY_NOTICE SET LL_STATUS='Y' WHERE DOC_NO IN('640017602','640018011','640018012','640018013','640018014')
+
+```
+</TabItem>
+
+</Tabs>
+
+
+
+
+This is the easy tutorial!
