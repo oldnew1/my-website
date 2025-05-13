@@ -16,7 +16,7 @@ const config = {
   favicon: 'img/favicon.ico',
  
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+ // url: 'https://your-docusaurus-site.example.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   //baseUrl: '/',
@@ -29,20 +29,20 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   //organizationName: 'facebook', // Usually your GitHub org/user name.
   //projectName: 'docusaurus', // Usually your repo name.
-
+ 
+ 
+  url: 'https://oldnew1.github.io', // 不要加尾部斜杠！
+  baseUrl: '/my-website/', // 必须带头尾斜杠（你的 repo 名）
+  
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-
-
-  // 你 GitHub 的用户名
-    organizationName: 'oldnew1', 
-
-    // 你 GitHub 的仓库名
-    projectName: 'my-website',  
-
-    // 如果你用的是用户页（即 github.io），这个设置为 "/"
-    baseUrl: '/my-website/',  
-
+ 
+  
+  // GitHub pages deployment config.
+  organizationName: 'oldnew1', // 你的 GitHub 用户名
+  projectName: 'my-website',   // 你的仓库名（而不是 github.io）
+  deploymentBranch: 'gh-pages',
+  trailingSlash: false,
     // 使用 GitHub Pages 部署插件
       plugins: ['@docusaurus/plugin-pwa'],
 
