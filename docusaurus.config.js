@@ -60,6 +60,8 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: 'docs', // ✅ 文档改为 /docs 路径
+          pages: true, // ✅ 启用 pages 功能
           sidebarPath: './sidebars.js',
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
