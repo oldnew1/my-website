@@ -44,7 +44,20 @@ const config = {
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
     // 使用 GitHub Pages 部署插件
-      plugins: ['@docusaurus/plugin-pwa'],
+    plugins: [
+      '@docusaurus/plugin-pwa',
+    
+      // 添加 ddocs 文档插件
+      [
+        '@docusaurus/plugin-content-docs',
+        {
+          id: 'qtdocs', // 唯一ID，和 sidebar/nav 要对应
+          path: 'qtdocs', // 文件夹路径，相对于根目录
+          routeBasePath: 'qtdocs', // URL 路径，例如 http://localhost:3000/ddocs
+          sidebarPath: require.resolve('./sidebars-qtdocs.js'),
+        },
+      ],
+    ],
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -68,6 +81,9 @@ const config = {
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
+        
+        
+        
         blog: {
           
           showReadingTime: true,
@@ -116,10 +132,15 @@ const config = {
             position: 'left',
             label: '工作笔记',
           },
-          // {to: '/blog', label: 'Blog', position: 'left'},
- 
           {
-            href: 'https://github.com/facebook/docusaurus',
+            type: 'docSidebar',
+            docsPluginId: 'qtdocs',
+            sidebarId: 'qtdocsSidebar',
+            position: 'left',
+            label: '其他笔记',
+          },
+          {
+            href: 'https://github.com/oldnew1/my-website.git',
             label: 'GitHub',
             position: 'right',
           },
@@ -146,38 +167,34 @@ const config = {
             title: '文档',
             items: [
               {
-                label: 'Tutorial',
+                label: '工作笔记',
                 to: '/docs/intro',
               },
             ],
           },
+          // {
+          //   title: 'Community',
+          //   items: [
+          //     {
+          //       label: 'Stack Overflow',
+          //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+          //     },
+          //     {
+          //       label: 'Discord',
+          //       href: 'https://discordapp.com/invite/docusaurus',
+          //     },
+          //     {
+          //       label: 'X',
+          //       href: 'https://x.com/docusaurus',
+          //     },
+          //   ],
+          // },
           {
-            title: 'Community',
+            title: '代码地址',
             items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/oldnew1/my-website.git',
               },
             ],
           },

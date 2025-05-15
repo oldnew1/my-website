@@ -1,0 +1,47 @@
+---
+sidebar_position: 100
+sidebar_label: EDM业务
+sidebar_class_name: green
+sulg: edmlog
+---
+# 发货
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import styles from './styles.module.css';
+
+<Tabs>
+<TabItem value="查询发货记录" label="查询发货记录"> 
+``` sql title WMS_PICKING
+
+SELECT A.PALLET_NO,A.RELATION_DOC,A.QTY,B.CUSTOMER_NO,B.CUSTOMER_NAME FROM (
+SELECT RELATION_DOC,PALLET_NO,QTY FROM WMS_PICKING WHERE ACTIVITY=1 AND PALLET_NO
+IN
+(
+'BT250331022',
+'BT250330008',
+'BT250331026',
+'BT250331028',
+'BT250401019',
+'BT250401011'
+)) A LEFT JOIN WMS_DELIVERY_NOTICE B ON A.RELATION_DOC=B.DOC_NO AND B.ACTIVITY=1;
+
+```
+</TabItem>
+<TabItem  value="修改信贷状态" label="修改信贷状态"> 
+
+
+``` sql title WMS_DELIVERY_NOTICE
+
+ SELECT CREDIT_STATUS,LL_STATUS,KDGRP FROM WMS_DELIVERY_NOTICE A LEFT JOIN WMS_DELIVERY_NOTICE_D B
+    ON A.DOC_NO=B.FROM_DOC_NO AND B.ACTIVITY=1
+    WHERE A.ACTIVITY=1 AND A.DOC_NO='640018012' AND A.KDGRP IN ('12','13','18')
+ AND ((A.LL_STATUS NOT IN ('Y') ) OR B.CREDIT_STATUS='N');
+ 
+
+ UPDATE WMS_DELIVERY_NOTICE SET LL_STATUS='Y' WHERE DOC_NO IN('640017602','640018011','640018012','640018013','640018014')
+
+```
+</TabItem>
+
+</Tabs>
