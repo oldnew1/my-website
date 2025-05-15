@@ -12,7 +12,7 @@ import rehypeKatex from 'rehype-katex';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: '我的文档',
-  tagline: '记录',
+  tagline: '笔记记录',
   favicon: 'img/favicon.ico',
  
   // Set the production url of your site here
@@ -31,8 +31,8 @@ const config = {
   //projectName: 'docusaurus', // Usually your repo name.
  
  
-  url: 'https://oldnew1.github.io', // 不要加尾部斜杠！
-  baseUrl: '/my-website/', // 必须带头尾斜杠（你的 repo 名）
+  url: 'http://62.234.30.27', // 不要加尾部斜杠！
+  baseUrl: '/', // 必须带头尾斜杠（你的 repo 名）
   
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -114,9 +114,9 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: '工作笔记',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          // {to: '/blog', label: 'Blog', position: 'left'},
  
           {
             href: 'https://github.com/facebook/docusaurus',
