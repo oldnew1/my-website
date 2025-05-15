@@ -205,3 +205,68 @@ sudo tail -f /var/log/nginx/access.log
 
 模块加载错误（如 remarkMath 未定义）：检查 docusaurus.config.js 中依赖引入是否完整。
 
+### 10 部署替换
+
+备份
+```bash
+ sudo mv /usr/share/nginx/html /usr/share/nginx/html_bak_$(date +%F-%H-%M-%S)
+```
+创建新的空目录
+```bash
+ sudo mkdir -p /usr/share/nginx/html
+```
+复制构建内容
+```bash
+sudo cp -r build/* /usr/share/nginx/html/
+```
+
+
+
+重启 Nginx 服务
+```bash
+sudo systemctl restart nginx
+```
+
+
+sudo systemctl restart nginx
+
+ 
+
+访问日志：错误日志（重点看这个）：
+```bash
+/var/log/nginx/access.log
+/var/log/nginx/error.log
+```
+ 
+
+
+ 
+
+ 
+ 
+
+#### 持续查看日志（适合在访问网页时动态查看）
+```bash
+tail -f /var/log/nginx/error.log
+```
+ 
+
+
+
+运行下面命令查看：
+```bash
+ps aux | grep nginx
+```
+
+执行以下命令授予访问权限：
+``` bash
+sudo chmod -R o+r /usr/share/nginx/html
+sudo chmod -R o+x /usr/share/nginx/html
+```
+如果还不行，尝试设置所属者为 nginx：
+``` bash
+sudo chown -R nginx:nginx /usr/share/nginx/html
+sudo systemctl restart nginx
+```
+
+
